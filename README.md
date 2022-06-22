@@ -11,19 +11,19 @@ Account delete itself after 10 minutes
 Windows:
 
 ```
-pip install MailGw
+pip install MailGw-Temporary-Email
 ```
 
 Linux/Mac OS:
 
 ```
-pip3 install MailGw
+pip3 install MailGw-Temporary-Email
 ```
 
 ## Example
 
 ```python
-from mailgw import Email
+from mailgw_temporary_email import Email
 
 def listener(message):
     print("\nSubject: " + message['subject'])
