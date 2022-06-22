@@ -4,16 +4,16 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="MailTm",
-    version="0.0.81",
-    author="MainSilent",
-    description="Temporary Email",
+    name="MailGw",
+    version="0.0.2",
+    author="bontoutou",
+    description="10 Minute Temporary Email",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    keywords=['mail', 'email', 'temporary mail', 'temporary email', 'mailtm'],
-    url="https://github.com/MainSilent/MailTm",
+    keywords=['mail', 'email', 'temporary mail', 'temporary email', 'mailgw'],
+    url="https://github.com/bontoutou00/MailGw",
     project_urls={
-        "Bug Tracker": "https://github.com/MainSilent/MailTm/issues",
+        "Bug Tracker": "https://github.com/bontoutou00/MailGw/issues",
     },
     classifiers=[
         "Programming Language :: Python :: 3",

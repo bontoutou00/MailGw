@@ -1,7 +1,4 @@
-import json
-import string
-import random
-import requests
+import json,string,random,requests
 from .message import Listen
 
 def username_gen(length=24, chars= string.ascii_letters + string.digits):
@@ -21,7 +18,7 @@ class Email(Listen):
             print("Failed to get domains")
 
     def domains(self):
-        url = "https://api.mail.tm/domains"
+        url = "https://api.mail.gw/domains"
         response = self.session.get(url)
         response.raise_for_status()
 
@@ -41,7 +38,7 @@ class Email(Listen):
         username = username if username else username_gen()
         password = password if password else password_gen()
 
-        url = "https://api.mail.tm/accounts"
+        url = "https://api.mail.gw/accounts"
         payload = {
             "address": f"{username}@{self.domain}",
             "password": password
@@ -62,7 +59,7 @@ class Email(Listen):
             raise Exception("Failed to make an address")
 
     def get_token(self, password):
-        url = "https://api.mail.tm/token"
+        url = "https://api.mail.gw/token"
         payload = {
             "address": self.address,
             "password": password

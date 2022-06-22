@@ -1,5 +1,4 @@
-import json
-import time
+import json,time
 from threading import Thread
 
 class Listen:
@@ -7,7 +6,7 @@ class Listen:
     message_ids = []
 
     def message_list(self):
-        url = "https://api.mail.tm/messages"
+        url = "https://api.mail.gw/messages"
         headers = { 'Authorization': 'Bearer ' + self.token }
         response = self.session.get(url, headers=headers)
         response.raise_for_status()
@@ -19,7 +18,7 @@ class Listen:
                 ]
 
     def message(self, idx):
-        url = "https://api.mail.tm/messages/" + idx
+        url = "https://api.mail.gw/messages/" + idx
         headers = { 'Authorization': 'Bearer ' + self.token }
         response = self.session.get(url, headers=headers)
         response.raise_for_status()

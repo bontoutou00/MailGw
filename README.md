@@ -1,30 +1,29 @@
-# MailTM API Wrapper
+# MailGW API Wrapper
 
-[![Downloads](https://pepy.tech/badge/mailtm)](https://pepy.tech/project/mailtm)
 
-[![Downloads](https://pepy.tech/badge/mailtm/month)](https://pepy.tech/project/mailtm)
-[![Downloads](https://pepy.tech/badge/mailtm/week)](https://pepy.tech/project/mailtm)
 
-MailTm is a free temporary mail service, This library is useful for automation tasks such as making accounts that needs email verification.
+MailGw is a free 10 minute temporary mail service, This library is useful for automation tasks such as making accounts that needs email verification.
+
+Account delete itself after 10 minutes
 
 ## Installation
 
 Windows:
 
 ```
-pip install MailTm
+pip install MailGw
 ```
 
 Linux/Mac OS:
 
 ```
-pip3 install MailTm
+pip3 install MailGw
 ```
 
 ## Example
 
 ```python
-from mailtm import Email
+from mailgw import Email
 
 def listener(message):
     print("\nSubject: " + message['subject'])
@@ -45,7 +44,7 @@ print("\nWaiting for new emails...")
 
 # Documentation
 
-API: https://mail.tm
+API: [https://mail.gw](https://docs.mail.gw/)
 
 `register(username=None, password=None, domain=None)` | Make an email account with random credentials, You can also pass a username, password and domain to use the same account.
 
