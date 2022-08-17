@@ -1,4 +1,4 @@
-import json,string,random,requests
+import string,random,requests
 from .message import Listen
 
 def username_gen(length=24, chars= string.ascii_letters + string.digits):
@@ -19,9 +19,17 @@ class Email(Listen):
 
     def domains(self):
         url = "https://api.mail.gw/domains"
-        response = self.session.get(url)
-        response.raise_for_status()
-
+        try:
+            response = self.session.get(url, timeout=2)
+            response.raise_for_status()
+        except requests.exceptions.ConnectionError as e:
+            print("Connection Error. Make sure you are connected to Internet.")
+            print(str(e))
+        except requests.exceptions.Timeout as e:
+            print("Mail.gw take too much time to get the domain")
+            print(str(e))
+        except requests.exceptions.HTTPError as e:
+            print(str(e))
         try:
             data = response.json()
             for domain in data['hydra:member']:
@@ -44,9 +52,17 @@ class Email(Listen):
             "password": password
         }
         headers = { 'Content-Type': 'application/json' }
-        response = self.session.post(url, headers=headers, json=payload)
-        response.raise_for_status()
-
+        try:
+            response = self.session.post(url, headers=headers, json=payload, timeout=5)
+            response.raise_for_status()
+        except requests.exceptions.ConnectionError as e:
+            print("Connection Error. Make sure you are connected to Internet.")
+            print(str(e))
+        except requests.exceptions.Timeout as e:
+            print("Mail.gw take too much time to register a new address")
+            print(str(e))
+        except requests.exceptions.HTTPError as e:
+            print(str(e))
         data = response.json()
         try:
             self.address = data['address']
@@ -65,8 +81,17 @@ class Email(Listen):
             "password": password
         }
         headers = {'Content-Type': 'application/json'}
-        response = self.session.post(url, headers=headers, json=payload)
-        response.raise_for_status()
+        try:
+            response = self.session.post(url, headers=headers, json=payload, timeout=2)
+            response.raise_for_status()
+        except requests.exceptions.ConnectionError as e:
+            print("Connection Error. Make sure you are connected to Internet.")
+            print(str(e))
+        except requests.exceptions.Timeout as e:
+            print("Mail.gw take too much time to get the token")
+            print(str(e))
+        except requests.exceptions.HTTPError as e:
+            print(str(e))
         try:
             self.token = response.json()['token']
         except:

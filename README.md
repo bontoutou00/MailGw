@@ -2,7 +2,7 @@
 
 
 
-MailGw is a free 10 minute temporary mail service, This library is useful for automation tasks such as making accounts that needs email verification.
+Mail.gw is a free 10 minute temporary mail service, This library is useful for automation tasks such as making accounts that needs email verification.
 
 Account delete itself after 10 minutes
 
